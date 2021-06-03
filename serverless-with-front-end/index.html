@@ -27,9 +27,8 @@
         $.ajax({
             url: "https://oezfcv9lqf.execute-api.us-east-2.amazonaws.com/Development",
             success: function(data) {
-                alert('hello from github')
                 for (var i = 0; i < data.length; i++) {
-                    console.log("Test: " + data[i]);
+                    console.log(data);
                 }
             }
         });
