@@ -28,8 +28,8 @@
                 //     $('#names').append(data[i].name);
                 // }
 
-                $.each(data, function(k, v) {
-                    console.log(this.name);
+                $.each(data, function(arr) {
+                    console.log(this[arr].name);
                 });
             }
         });
