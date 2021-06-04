@@ -21,15 +21,16 @@
 
 <script type="text/javascript">
     $('#submitName').click(function() {
-        // fetch("https://oezfcv9lqf.execute-api.us-east-2.amazonaws.com/Development")
-        // .then(data => console.log(data));
-
         $.ajax({
             url: "https://oezfcv9lqf.execute-api.us-east-2.amazonaws.com/Development",
             success: function(data) {
-                for (var i = 0; i < data.length; i++) {
-                    $('#names').append(data[i].name);
-                }
+                // for (let i = 0; i < data.length; i++) {
+                //     $('#names').append(data[i].name);
+                // }
+
+                $.each(this, function(k, v) {
+                    console.log(this, k, v);
+                });
             }
         });
     });
