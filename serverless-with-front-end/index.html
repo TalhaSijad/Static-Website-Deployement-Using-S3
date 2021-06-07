@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Serverless and Lambda with Front-End</title>
 </head>
+
 <body>
-    <!-- <form>
-        <label for="name">New:</label>
+    <form method="POST" action="">
+        <label for="name">Name:</label>
         <input id="name" name="name" type="text">
         <button type="submit" id="submitName">Submit</button>
-    </form> -->
+    </form>
     <button id="submitName">Get All Names</button>
     <div id="names"></div>
 </body>
@@ -24,12 +25,9 @@
         $.ajax({
             url: "https://oezfcv9lqf.execute-api.us-east-2.amazonaws.com/Development",
             success: function(data) {
-                // for (let i = 0; i < data.length; i++) {
-                //     $('#names').append(data[i].name);
-                // }
-
-                $.each(data, function(index) {
-                    console.log(data[index]);
+                $('#names').html('');
+                $.each(data.Items, function(key, value) {
+                    $('#names').append('<p>' + this.name + '</p>');
                 });
             }
         });
