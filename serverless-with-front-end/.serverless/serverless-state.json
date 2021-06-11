@@ -1,8 +1,8 @@
 {
   "service": {
-    "service": "serverless-with-front-end",
+    "service": "serverless-with-front-end-new",
     "serviceObject": {
-      "name": "serverless-with-front-end"
+      "name": "serverless-with-front-end-new"
     },
     "provider": {
       "name": "aws",
@@ -101,10 +101,10 @@
               }
             }
           },
-          "HelloWorldLogGroup": {
+          "HandlerLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/serverless-with-front-end-dev-helloWorld"
+              "LogGroupName": "/aws/lambda/serverless-with-front-end-new-dev-handler"
             }
           },
           "IamRoleLambdaExecution": {
@@ -132,7 +132,7 @@
                     "Fn::Join": [
                       "-",
                       [
-                        "serverless-with-front-end",
+                        "serverless-with-front-end-new",
                         "dev",
                         "lambda"
                       ]
@@ -149,7 +149,7 @@
                         ],
                         "Resource": [
                           {
-                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/serverless-with-front-end-dev*:*"
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/serverless-with-front-end-new-dev*:*"
                           }
                         ]
                       },
@@ -160,7 +160,7 @@
                         ],
                         "Resource": [
                           {
-                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/serverless-with-front-end-dev*:*:*"
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/serverless-with-front-end-new-dev*:*:*"
                           }
                         ]
                       },
@@ -176,7 +176,7 @@
                 "Fn::Join": [
                   "-",
                   [
-                    "serverless-with-front-end",
+                    "serverless-with-front-end-new",
                     "dev",
                     {
                       "Ref": "AWS::Region"
@@ -187,18 +187,18 @@
               }
             }
           },
-          "HelloWorldLambdaFunction": {
+          "HandlerLambdaFunction": {
             "Type": "AWS::Lambda::Function",
             "Properties": {
               "Code": {
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-with-front-end/dev/1622719320052-2021-06-03T11:22:00.052Z/serverless-with-front-end.zip"
+                "S3Key": "serverless/serverless-with-front-end-new/dev/1623161471849-2021-06-08T14:11:11.849Z/serverless-with-front-end-new.zip"
               },
-              "Handler": "handler.helloWorld",
+              "Handler": "handler.handler",
               "Runtime": "nodejs12.x",
-              "FunctionName": "serverless-with-front-end-dev-helloWorld",
+              "FunctionName": "serverless-with-front-end-new-dev-handler",
               "MemorySize": 1024,
               "Timeout": 6,
               "Role": {
@@ -209,23 +209,23 @@
               }
             },
             "DependsOn": [
-              "HelloWorldLogGroup"
+              "HandlerLogGroup"
             ]
           },
-          "HelloWorldLambdaVersioniE3L5fI8iZJyDmOltEwGciCTasneBE0HxkhgV62nT0": {
+          "HandlerLambdaVersionteaMibzBkSwxja6TDKypXNtiCrC7fXfpZ6dxHleON0": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
-                "Ref": "HelloWorldLambdaFunction"
+                "Ref": "HandlerLambdaFunction"
               },
-              "CodeSha256": "xCyVzIjHHbGzdeZrmFTuNsE314u+lrPYE0g55dCKzzY="
+              "CodeSha256": "xH6n8PBZgYbG8Pe6cHv4jlyTZd3AVJNh62bzyQKBGo8="
             }
           },
           "ApiGatewayRestApi": {
             "Type": "AWS::ApiGateway::RestApi",
             "Properties": {
-              "Name": "dev-serverless-with-front-end",
+              "Name": "dev-serverless-with-front-end-new",
               "EndpointConfiguration": {
                 "Types": [
                   "EDGE"
@@ -234,7 +234,7 @@
               "Policy": ""
             }
           },
-          "ApiGatewayResourceHelloDashworld": {
+          "ApiGatewayResourceHandlerhandler": {
             "Type": "AWS::ApiGateway::Resource",
             "Properties": {
               "ParentId": {
@@ -243,13 +243,13 @@
                   "RootResourceId"
                 ]
               },
-              "PathPart": "hello-world",
+              "PathPart": "handler.handler",
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
               }
             }
           },
-          "ApiGatewayMethodHelloDashworldOptions": {
+          "ApiGatewayMethodHandlerhandlerOptions": {
             "Type": "AWS::ApiGateway::Method",
             "Properties": {
               "AuthorizationType": "NONE",
@@ -287,20 +287,20 @@
                 ]
               },
               "ResourceId": {
-                "Ref": "ApiGatewayResourceHelloDashworld"
+                "Ref": "ApiGatewayResourceHandlerhandler"
               },
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
               }
             }
           },
-          "ApiGatewayMethodHelloDashworldGet": {
+          "ApiGatewayMethodHandlerhandlerGet": {
             "Type": "AWS::ApiGateway::Method",
             "Properties": {
               "HttpMethod": "GET",
               "RequestParameters": {},
               "ResourceId": {
-                "Ref": "ApiGatewayResourceHelloDashworld"
+                "Ref": "ApiGatewayResourceHandlerhandler"
               },
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
@@ -325,7 +325,7 @@
                       ":lambda:path/2015-03-31/functions/",
                       {
                         "Fn::GetAtt": [
-                          "HelloWorldLambdaFunction",
+                          "HandlerLambdaFunction",
                           "Arn"
                         ]
                       },
@@ -337,7 +337,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1622719318618": {
+          "ApiGatewayDeployment1623161470935": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -346,16 +346,16 @@
               "StageName": "dev"
             },
             "DependsOn": [
-              "ApiGatewayMethodHelloDashworldOptions",
-              "ApiGatewayMethodHelloDashworldGet"
+              "ApiGatewayMethodHandlerhandlerOptions",
+              "ApiGatewayMethodHandlerhandlerGet"
             ]
           },
-          "HelloWorldLambdaPermissionApiGateway": {
+          "HandlerLambdaPermissionApiGateway": {
             "Type": "AWS::Lambda::Permission",
             "Properties": {
               "FunctionName": {
                 "Fn::GetAtt": [
-                  "HelloWorldLambdaFunction",
+                  "HandlerLambdaFunction",
                   "Arn"
                 ]
               },
@@ -394,16 +394,16 @@
               "Ref": "ServerlessDeploymentBucket"
             },
             "Export": {
-              "Name": "sls-serverless-with-front-end-dev-ServerlessDeploymentBucketName"
+              "Name": "sls-serverless-with-front-end-new-dev-ServerlessDeploymentBucketName"
             }
           },
-          "HelloWorldLambdaFunctionQualifiedArn": {
+          "HandlerLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HelloWorldLambdaVersioniE3L5fI8iZJyDmOltEwGciCTasneBE0HxkhgV62nT0"
+              "Ref": "HandlerLambdaVersionteaMibzBkSwxja6TDKypXNtiCrC7fXfpZ6dxHleON0"
             },
             "Export": {
-              "Name": "sls-serverless-with-front-end-dev-HelloWorldLambdaFunctionQualifiedArn"
+              "Name": "sls-serverless-with-front-end-new-dev-HandlerLambdaFunctionQualifiedArn"
             }
           },
           "ServiceEndpoint": {
@@ -429,7 +429,7 @@
               ]
             },
             "Export": {
-              "Name": "sls-serverless-with-front-end-dev-ServiceEndpoint"
+              "Name": "sls-serverless-with-front-end-new-dev-ServiceEndpoint"
             }
           }
         }
@@ -520,12 +520,12 @@
     },
     "pluginsData": {},
     "functions": {
-      "helloWorld": {
-        "handler": "handler.helloWorld",
+      "handler": {
+        "handler": "handler.handler",
         "events": [
           {
             "http": {
-              "path": "hello-world",
+              "path": "handler.handler",
               "method": "get",
               "cors": {
                 "origins": [
@@ -550,13 +550,13 @@
             }
           }
         ],
-        "name": "serverless-with-front-end-dev-helloWorld",
+        "name": "serverless-with-front-end-new-dev-handler",
         "package": {},
         "memory": 1024,
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "HelloWorldLambdaVersioniE3L5fI8iZJyDmOltEwGciCTasneBE0HxkhgV62nT0"
+        "versionLogicalId": "HandlerLambdaVersionteaMibzBkSwxja6TDKypXNtiCrC7fXfpZ6dxHleON0"
       }
     },
     "configValidationMode": "warn",
@@ -575,10 +575,10 @@
       }
     },
     "isDashboardMonitoringPreconfigured": false,
-    "artifact": "/Users/talha.sijad/serverless-lambda-with-front-end/serverless-with-front-end/.serverless/serverless-with-front-end.zip"
+    "artifact": "/Users/talha.sijad/serverless-lambda-with-front-end/serverless-with-front-end/.serverless/serverless-with-front-end-new.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/serverless-with-front-end/dev/1622719320052-2021-06-03T11:22:00.052Z",
-    "artifact": "serverless-with-front-end.zip"
+    "artifactDirectoryName": "serverless/serverless-with-front-end-new/dev/1623161471849-2021-06-08T14:11:11.849Z",
+    "artifact": "serverless-with-front-end-new.zip"
   }
 }

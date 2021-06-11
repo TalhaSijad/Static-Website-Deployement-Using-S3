@@ -5,7 +5,7 @@
 # uses to deploy your code to your provider of choice
 
 # The `service` block is the name of the service
-service: serverless-with-front-end
+service: serverless-with-front-end-new
 
 frameworkVersion: '2'
 
@@ -30,11 +30,11 @@ provider:
 
 # The `functions` block defines what code to deploy
 functions:
-  helloWorld:
-    handler: handler.helloWorld
+  handler:
+    handler: handler.handler
     # The `events` block defines how to trigger the handler.helloWorld code
     events:
       - http:
-          path: hello-world
+          path: handler.handler
           method: get
           cors: true
