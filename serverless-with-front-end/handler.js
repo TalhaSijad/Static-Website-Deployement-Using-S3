@@ -99,25 +99,3 @@ exports.handler = async (event, context) => {
     headers
   };
 };
-
-$(document).ready(function () {
-  let accessKey = process.env.ACCESS_KEY
-  alert(accessKey);
-})
-
-var apigClient = apigClientFactory.newClient({
-  accessKey: process.env.ACCESS_KEY,
-  secretKey: process.env.SECURITY_ACCESS_ID,
-});
-
-$('#submitName').click(function() {
-  $.ajax({
-      url: "https://1p0eeefrti.execute-api.us-east-2.amazonaws.com/Development/names",
-      success: function(data) {
-          $('#names').html('');
-          $.each(data.Items, function(key, value) {
-              $('#names').append('<p>' + this.name + '</p>');
-          });
-      }
-  });
-});

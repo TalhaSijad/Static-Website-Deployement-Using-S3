@@ -31,3 +31,17 @@
 <script type="text/javascript" src="lib/apiGatewayCore/simpleHttpClient.js"></script>
 <script type="text/javascript" src="lib/apiGatewayCore/utils.js"></script>
 <script type="text/javascript" src="apigClient.js"></script> -->
+
+<script type="text/javascript">
+    $('#submitName').click(function() {
+        $.ajax({
+            url: "https://1p0eeefrti.execute-api.us-east-2.amazonaws.com/Development/names",
+            success: function(data) {
+                $('#names').html('');
+                $.each(data.Items, function(key, value) {
+                    $('#names').append('<p>' + this.name + '</p>');
+                });
+            }
+        });
+    });
+</script>
