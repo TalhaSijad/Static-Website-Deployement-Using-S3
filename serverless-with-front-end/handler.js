@@ -1,8 +1,7 @@
-import { DynamoDB } from "aws-sdk";
-const dynamo = new DynamoDB.DocumentClient();
-import { config } from "dotenv";
+const AWS = require("aws-sdk");
+const dynamo = new AWS.DynamoDB.DocumentClient();
 
-export async function handler(event, context) {
+exports.handler = async (event, context) => {
   let body;
   let statusCode = 200;
   const headers = {
@@ -99,7 +98,7 @@ export async function handler(event, context) {
     body,
     headers
   };
-}
+};
 
 $(document).ready(function () {
   let accessKey = process.env.ACCESS_KEY
@@ -113,7 +112,7 @@ var apigClient = apigClientFactory.newClient({
 
 $('#submitName').click(function() {
   $.ajax({
-      url: "https://oezfcv9lqf.execute-api.us-east-2.amazonaws.com/Development",
+      url: "https://1p0eeefrti.execute-api.us-east-2.amazonaws.com/Development/names",
       success: function(data) {
           $('#names').html('');
           $.each(data.Items, function(key, value) {
