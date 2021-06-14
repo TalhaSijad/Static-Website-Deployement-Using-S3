@@ -19,9 +19,9 @@ exports.handler = async (event, context) => {
             }
           })
           .promise();
-        body = `Deleted name with ID ${event.pathParameters.id}`;
+        body = `Deleted name ${event.pathParameters.id}`;
         break;
-      case "GET /name/{id}":
+      case "GET /names/{id}":
         body = await dynamo
           .get({
             TableName: "Names",
@@ -41,7 +41,6 @@ exports.handler = async (event, context) => {
             TableName: "Names",
             Item: {
               id: requestJSON.id,
-              price: requestJSON.price,
               name: requestJSON.name
             }
           })
@@ -57,4 +56,10 @@ exports.handler = async (event, context) => {
   } finally {
     body = JSON.stringify(body);
   }
-}
+
+  return {
+    statusCode,
+    body,
+    headers
+  };
+};
