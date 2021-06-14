@@ -1,10 +1,8 @@
-const AWS = require("aws-sdk");
-const dynamo = new AWS.DynamoDB.DocumentClient();
-const dotenv = require ("dotenv");
+import { DynamoDB } from "aws-sdk";
+const dynamo = new DynamoDB.DocumentClient();
+import { config } from "dotenv";
 
-dotenv.config();
-
-exports.handler = async (event, context) => {
+export async function handler(event, context) {
   let body;
   let statusCode = 200;
   const headers = {
@@ -101,7 +99,7 @@ exports.handler = async (event, context) => {
     body,
     headers
   };
-};
+}
 
 $(document).ready(function () {
   let accessKey = process.env.ACCESS_KEY
