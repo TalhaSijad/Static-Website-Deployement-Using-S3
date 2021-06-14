@@ -194,7 +194,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-with-front-end-new/dev/1623681910448-2021-06-14T14:45:10.448Z/serverless-with-front-end-new.zip"
+                "S3Key": "serverless/serverless-with-front-end-new/dev/1623684623743-2021-06-14T15:30:23.743Z/serverless-with-front-end-new.zip"
               },
               "Handler": "handler.handler",
               "Runtime": "nodejs12.x",
@@ -212,14 +212,14 @@
               "HandlerLogGroup"
             ]
           },
-          "HandlerLambdaVersion1pguGNL0ciPwHXS4UeNYHdFC0p2t6Mf04VR5SEypI": {
+          "HandlerLambdaVersionFqiQK1RuLg6giP6A5NUt2x2dTwWl3ikseot6lvTZ6Q": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "HandlerLambdaFunction"
               },
-              "CodeSha256": "P44zFViIVHO4tByuhEqtDdUikHzGh1RxNvqsc+e2+OI="
+              "CodeSha256": "cQdir7nE0SEmFvgt1HkXjMgJ9VimK9KDpp8N4O4K06k="
             }
           },
           "ApiGatewayRestApi": {
@@ -337,7 +337,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1623681909108": {
+          "ApiGatewayDeployment1623684622329": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -400,7 +400,7 @@
           "HandlerLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HandlerLambdaVersion1pguGNL0ciPwHXS4UeNYHdFC0p2t6Mf04VR5SEypI"
+              "Ref": "HandlerLambdaVersionFqiQK1RuLg6giP6A5NUt2x2dTwWl3ikseot6lvTZ6Q"
             },
             "Export": {
               "Name": "sls-serverless-with-front-end-new-dev-HandlerLambdaFunctionQualifiedArn"
@@ -556,7 +556,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "HandlerLambdaVersion1pguGNL0ciPwHXS4UeNYHdFC0p2t6Mf04VR5SEypI"
+        "versionLogicalId": "HandlerLambdaVersionFqiQK1RuLg6giP6A5NUt2x2dTwWl3ikseot6lvTZ6Q"
       }
     },
     "configValidationMode": "warn",
@@ -578,7 +578,7 @@
     "artifact": "/Users/talha.sijad/serverless-lambda-with-front-end/serverless-with-front-end/.serverless/serverless-with-front-end-new.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/serverless-with-front-end-new/dev/1623681910448-2021-06-14T14:45:10.448Z",
+    "artifactDirectoryName": "serverless/serverless-with-front-end-new/dev/1623684623743-2021-06-14T15:30:23.743Z",
     "artifact": "serverless-with-front-end-new.zip"
   }
 }
